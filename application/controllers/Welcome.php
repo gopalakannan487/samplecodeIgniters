@@ -18,8 +18,58 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+        // Load the session library
+        $this->load->library('session');
+          $this->load->helper('url');
+        // Load the email library
+        $this->load->library('email');
+    }
 	public function index()
 	{
 		$this->load->view('welcome_message');
 	}
+
+public function formsubmit()
+{
+    $email = $this->input->post('email');
+
+    // Email configuration
+    $config = array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.gmail.com', // Corrected SMTP host
+        'smtp_user' => 'gopalfrontenddeveloper@gmail.com',
+        'smtp_pass' => 'yuhtqrxmndjfeujo', // Ensure this is an App Password
+        'smtp_port' => 465,
+        'mailtype' => 'html',
+        'charset' => 'utf-8',
+        'wordwrap' => TRUE,
+        'newline' => "\r\n"
+    );
+
+    // Initialize email library with configuration
+    $this->email->initialize($config);
+
+    // Email sending settings
+    $this->email->from($email, 'Test Mail');
+    $this->email->to('gopalakannan@enovasolutions.com');
+    $this->email->subject('Subscribe email');
+    $this->email->message('Subscribe email is: ' . $email);
+
+    // Sending email and handling response
+    if($this->email->send()) {
+        $response = array('status' => 'success', 'message' => 'Email sent successfully.');
+    } else {
+        $response = array('status' => 'error', 'message' => $this->email->print_debugger());
+    }
+
+    // Return response as JSON
+    echo json_encode($response);
 }
+
+}
+
+

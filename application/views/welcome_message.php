@@ -55,6 +55,7 @@
 
         <!--====== Header PART START ======-->
 
+
         <section class="header_area">
             <div class="header_top">
                 <div class="container">
@@ -888,6 +889,9 @@
 
         <!--====== Team PART ENDS ======-->
 
+
+
+
         <!--====== Events PART START ======-->
 
         <section class="events_area d-flex flex-wrap">
@@ -963,6 +967,9 @@
 
         <!--====== Events PART ENDS ======-->
 
+
+
+
         <!--====== Blog PART START ======-->
 
         <section class="blog_area pt-120 pb-130">
@@ -1035,6 +1042,26 @@
         </section>
 
         <!--====== Blog PART ENDS ======-->
+<section class="tp-cta-area p-relative">
+            <div class="tp-cta-bg"></div>
+            <div class="container">
+               <div class="tp-cta-bg-wrapper p-relative" data-background="assets/images/bg-shape.png" style="background-image: url('assets/images/bg-shape.png');">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <h3 class="tp-cta-title">Get notified about the event! <br> Subscribe today</h3>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="tp-cta-email p-relative">
+                            <form method="post" action="<?php echo base_url('Welcome/formsubmit')?>" id="emailForm">
+                           <input type="email" name="email" placeholder="Email Address">
+                           <button class="" type="submit"> <span><i class="fa fa-envelope"></i> Subscribe</span></button>
+                            </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
 
         <!--====== Footer PART START ======-->
 
@@ -1157,6 +1184,52 @@
         <!--====== Main js ======-->
         <script src="assets/js/main.js"></script>
  
+       <!--====== Sweet alert js ======-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script>
+$(document).ready(function() {
+    $('#emailForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent form from submitting normally
+        
+        // AJAX request
+        $.ajax({
+            url: "<?php echo base_url('welcome/formsubmit'); ?>",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json", // Expecting JSON response
+            success: function(response) {
+                console.log(response);
+
+                // Display SweetAlert with response message
+                Swal.fire({
+                    title: response.status === 'success' ? 'Success!' : 'Error!',
+                    text: response.message,
+                    icon: response.status === 'success' ? 'success' : 'error',
+                    confirmButtonText: 'OK'
+                });
+            },
+            error: function(xhr, status, error) {
+                let errorMessage = 'An error occurred. Please try again.';
+                
+                // Check if a more specific error message is provided by the server
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+
+                // Display SweetAlert error alert
+                Swal.fire({
+                    title: 'Error!',
+                    text: errorMessage,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+});
+
+
+    </script>
   
     </body>
 </html>
