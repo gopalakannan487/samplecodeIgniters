@@ -55,7 +55,7 @@ public function formsubmit()
 
     // Email sending settings
     $this->email->from($email, 'Test Mail');
-    $this->email->to('gopalakannan@enovasolutions.com');
+    $this->email->to('gopalfrontenddeveloper@gmail.com');
     $this->email->subject('Subscribe email');
     $this->email->message('Subscribe email is: ' . $email);
 
