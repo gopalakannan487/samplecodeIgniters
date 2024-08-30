@@ -1229,7 +1229,49 @@ $(document).ready(function() {
 });
 
 
+ document.addEventListener('DOMContentLoaded', function() {
+            function disableShortcuts(e) {
+                if (
+                    e.keyCode === 123 || // F12
+                    (e.ctrlKey && e.shiftKey && (
+                        e.keyCode === 73 || // Ctrl+Shift+I
+                        e.keyCode === 74 || // Ctrl+Shift+J
+                        e.keyCode === 67    // Ctrl+Shift+C
+                    )) ||
+                    (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+                ) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+
+            document.addEventListener('keydown', disableShortcuts);
+
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+
+            window.addEventListener('keydown', function(e) {
+                if (e.keyCode === 123 || 
+                    (e.ctrlKey && e.shiftKey && 
+                    (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
+                    (e.ctrlKey && e.keyCode === 85)) {
+                    e.preventDefault();
+                }
+            });
+
+            setInterval(function() {
+                if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+                    alert('Developer Not Accessable...!!');
+                }
+            }, 1000);
+        });
+
     </script>
+
+
+
+
   
     </body>
 </html>
