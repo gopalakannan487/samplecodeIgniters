@@ -30,7 +30,10 @@ class Welcome extends CI_Controller {
     }
 	public function index()
 	{
+
+        $this->load->view('header');
 		$this->load->view('welcome_message');
+        $this->load->view('footer');
 	}
 
 public function formsubmit()
@@ -69,6 +72,15 @@ public function formsubmit()
     // Return response as JSON
     echo json_encode($response);
 }
+
+
+    public function caccount()
+    {
+
+        $this->load->view('header');
+        $this->load->view('createaccount');
+        $this->load->view('footer');
+    }
 
 }
 

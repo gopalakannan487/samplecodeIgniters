@@ -49,6 +49,8 @@
     37.Courses Details Banner
     38.Courses Details
     39.Contact
+    40.Form Css
+    41.Section 
 
 */
 
@@ -2585,6 +2587,7 @@ p {
 
 .footer_area {
     position: relative;
+    bottom: 0px;
     z-index: 1;
     margin-top: -110px;
 }
@@ -5492,5 +5495,12 @@ a, button {
 
 
 
+/*===========================
+    41.Section 
+===========================*/
 
-
+.mainsection
+{
+    margin: 150px 0px;
+    position: relative;
+}
