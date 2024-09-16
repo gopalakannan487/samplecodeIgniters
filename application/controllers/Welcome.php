@@ -22,6 +22,7 @@ class Welcome extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+        $this->load->model('Welcome_model');
         // Load the session library
         $this->load->library('session');
           $this->load->helper('url');
@@ -77,9 +78,26 @@ public function formsubmit()
     public function caccount()
     {
 
-        $this->load->view('header');
+        $this->load->view('template');
         $this->load->view('createaccount');
         $this->load->view('footer');
+    }
+
+    public function formregister()
+    {
+        $data['registername'] = $this->input->post('registername'); 
+        $data['registeremail'] = $this->input->post('registeremail'); 
+        $data['registerpassword'] = $this->input->post('registerpassword'); 
+        $result = $this->Welcome_model->registerdata($data);
+        if($result == true)
+        {
+            echo 'successfully created';
+        }
+        else
+        {
+            echo 'Error';
+        }
+        redirect('Welcome/caccount');
     }
 
 }

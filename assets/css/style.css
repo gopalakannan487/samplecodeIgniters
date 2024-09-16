@@ -5504,3 +5504,7 @@ a, button {
     margin: 150px 0px;
     position: relative;
 }
+label.error
+{
+    color: red;
+}

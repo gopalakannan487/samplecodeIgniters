@@ -89,9 +89,6 @@
 
         <!--====== BACK TOP TOP PART ENDS ======-->
 
-        <!--====== jquery js ======-->
-        <script src="<?php echo base_url('')?>/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-        <script src="<?php echo base_url('')?>/assets/js/vendor/jquery-1.12.4.min.js"></script>
 
         <!--====== Bootstrap js ======-->
         <script src="<?php echo base_url('')?>/assets/js/bootstrap.min.js"></script>
@@ -165,35 +162,35 @@ $(document).ready(function() {
 
 
  document.addEventListener('DOMContentLoaded', function() {
-            function disableShortcuts(e) {
-                if (
-                    e.keyCode === 123 || // F12
-                    (e.ctrlKey && e.shiftKey && (
-                        e.keyCode === 73 || // Ctrl+Shift+I
-                        e.keyCode === 74 || // Ctrl+Shift+J
-                        e.keyCode === 67    // Ctrl+Shift+C
-                    )) ||
-                    (e.ctrlKey && e.keyCode === 85) // Ctrl+U
-                ) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }
+            // function disableShortcuts(e) {
+            //     if (
+            //         e.keyCode === 123 || // F12
+            //         (e.ctrlKey && e.shiftKey && (
+            //             e.keyCode === 73 || // Ctrl+Shift+I
+            //             e.keyCode === 74 || // Ctrl+Shift+J
+            //             e.keyCode === 67    // Ctrl+Shift+C
+            //         )) ||
+            //         (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+            //     ) {
+            //         e.preventDefault();
+            //         e.stopPropagation();
+            //     }
+            // }
 
-            document.addEventListener('keydown', disableShortcuts);
+            // document.addEventListener('keydown', disableShortcuts);
 
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-            });
+            // document.addEventListener('contextmenu', function(e) {
+            //     e.preventDefault();
+            // });
 
-            window.addEventListener('keydown', function(e) {
-                if (e.keyCode === 123 || 
-                    (e.ctrlKey && e.shiftKey && 
-                    (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
-                    (e.ctrlKey && e.keyCode === 85)) {
-                    e.preventDefault();
-                }
-            });
+            // window.addEventListener('keydown', function(e) {
+            //     if (e.keyCode === 123 || 
+            //         (e.ctrlKey && e.shiftKey && 
+            //         (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
+            //         (e.ctrlKey && e.keyCode === 85)) {
+            //         e.preventDefault();
+            //     }
+            // });
 
             // setInterval(function() {
             //     if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {

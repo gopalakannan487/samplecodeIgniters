@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="header_menu">
+            <div class="header_menu" style="background-color: #272727;">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg">
                         <a class="navbar-brand" href="index.html">
@@ -107,7 +107,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">
                                 <li>
-                                    <a class="active" href="index.html">Home <i class="fa fa-chevron-down"></i></a>
+                                    <a class="active" href="<?php echo base_url('welcome') ?>">Home <i class="fa fa-chevron-down"></i></a>
 
                                     <ul class="sub-menu">
                                         <li><a class="active" href="index.html">Home 01</a></li>
