@@ -39,10 +39,11 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
+
+
     $(document).on('click','#signup',function()
     {
-
-    $("#myform").validate({
+	  $("#myform").validate({
     rules: {
     registername: "required",
     registeremail: {
@@ -64,8 +65,34 @@ $(document).ready(function()
   //   form.submit();
   // }
 });
+	  });
+
+
+
+
+
+$('#myform').submit(function () {
+        if($(this).valid()) {
+ 
+
+swal("Good job!", "Your Register!", "successfully");
+
+  	}else
+  	{
+  		  swal("Cancelled", "Please Enter the Fields)", "error");
+  		  swal({
+  title: "Error!",
+  text: "Here's my error message!",
+  type: "error",
+  confirmButtonText: "Cool"
+});
+  	}
 
     });
+
+
+
+
 });
 
 </script>
