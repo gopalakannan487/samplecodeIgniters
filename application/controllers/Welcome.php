@@ -85,19 +85,22 @@ public function formsubmit()
 
     public function formregister()
     {
+        //echo'<pre>';print_r($_POST);exit;
         $data['registername'] = $this->input->post('registername'); 
         $data['registeremail'] = $this->input->post('registeremail'); 
         $data['registerpassword'] = $this->input->post('registerpassword'); 
         $result = $this->Welcome_model->registerdata($data);
-        if($result == true)
-        {
-            echo 'successfully created';
-        }
-        else
-        {
-            echo 'Error';
-        }
-        redirect('Welcome/caccount');
+        //echo'<pre>';print_r($result);exit;
+        
+        // if($result == true)
+        // {
+        //     echo 'successfully created';
+        // }
+        // else
+        // {
+            echo  $result;
+        //}
+       // redirect('Welcome/caccount');
     }
 
 }
