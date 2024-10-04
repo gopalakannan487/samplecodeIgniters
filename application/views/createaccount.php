@@ -9,6 +9,7 @@
                 <a href="" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img src="./assets/images/logos/logo-light.svg" alt="">
                 </a>
+                    <h4 class="text-center">Register</h4>
                 <form class="" id="myform" method="post" action="">
                   <div class="mb-3">
                     <label for="exampleInputtext1" class="form-label">Name</label>
@@ -25,7 +26,7 @@
                   <input type="submit" id="signup" value="Sign Up" class="btn btn-primary w-100 py-8 fs-4 mb-4"></input>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-login.html">Sign In</a>
+                    <a class="text-primary fw-bold ms-2" href="<?php echo base_url('Welcome/login')?>"> Sign In</a>
                   </div>
                 </form>
               </div>
@@ -47,7 +48,11 @@ $(document).ready(function()
             registername: "required",
             registeremail: {
                 required: true,
-                email: true
+                email: true,
+                 remote: {
+                    url: "<?php echo base_url('welcome/check_email'); ?>", // URL to check email existence
+                    type: "post"
+                }
             },
             registerpassword: "required"
         },
@@ -55,7 +60,8 @@ $(document).ready(function()
             registername: "Please specify your name",
             registeremail: {
                 required: "We need your email address to contact you",
-                email: "Your email address must be in the format of name@domain.com"
+                email: "Your email address must be in the format of name@domain.com",
+                remote: "This email address is already registered."
             },
             registerpassword: "Please enter your password"
         },
@@ -68,8 +74,20 @@ $(document).ready(function()
                    // alert(data);
                     if(data == 1)
                     {
-                      alert('successfully');
-                    // swal("Good job!", "You are registered successfully!", "success");
+                    //  alert('successfully');
+                        swal({
+                          title: "Good job!",
+                          text: "You are registered successfully!",
+                          type: "success",
+                         
+                        },
+                        function(isConfirm){
+                          if (isConfirm) {
+                          window.location.reload();
+                          } else {
+                         
+                          }
+                        });
                    }else
                    {
                      alert('error');
@@ -83,15 +101,6 @@ $(document).ready(function()
         }
     });
 });
-
-
-
-
-
-
- 
-
-
 
 
 });

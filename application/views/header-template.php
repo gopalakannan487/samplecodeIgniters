@@ -87,7 +87,7 @@
                             <ul>
                                 <li><a href="<?php echo base_url('Welcome/caccount')?>">Create An Account</a></li>
                                 <li>
-                                    <a href="<?php echo base_url('Welcome/login')?>" class="main-btn"  ><i class="fa fa-user-o"></i> Log In</a>
+                                    <a href="<?php echo base_url('Welcome/login')?>" class="main-btn"  ><i class="fa fa-user-o"></i> Log Out</a>
                                 </li>
                             </ul>
                         </div>

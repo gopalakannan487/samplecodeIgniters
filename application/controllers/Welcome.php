@@ -75,10 +75,10 @@ public function formsubmit()
 }
 
 
+// Register form
     public function caccount()
     {
-
-        $this->load->view('template');
+        $this->load->view('header');
         $this->load->view('createaccount');
         $this->load->view('footer');
     }
@@ -103,6 +103,63 @@ public function formsubmit()
        // redirect('Welcome/caccount');
     }
 
+      public function check_email() {
+        // Load the model for checking email
+        $this->load->model('Welcome_model');
+        
+        // Get the posted email
+        $email = $this->input->post('registeremail');
+
+        // Check if the email exists
+        if ($this->Welcome_model->email_exists($email)) {
+            echo 'false'; // Email exists
+        } else {
+            echo 'true'; // Email does not exist
+        }
+    }
+
+// Login form
+    public function login()
+    {
+        $this->load->view('header');
+        $this->load->view('login');
+        $this->load->view('footer');
+    }
+
+
+   public function formsignin() {
+ 
+
+        // Get the posted data
+        $email = $this->input->post('loginemail'); 
+        $password = $this->input->post('loginpassword'); 
+
+        // Call the signindata method
+        $result = $this->Welcome_model->signindata($email, $password);
+
+        // Check the result
+        if ($result) {
+            // User is valid, set session data
+            $this->session->set_userdata('logged_in', true);
+            $this->session->set_userdata('user_id', $result->id); // Assuming 'id' is the user's ID
+            
+            // Return success response
+            echo json_encode(['status' => 'success', 'message' => 'Login successful!']);
+        } else {
+            // Invalid credentials
+            echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+        }
+    }
+
+
+// Dashboard view
+
+    public function dashboard()
+    {
+        $this->load->view('header-template');
+        $this->load->view('dashboard');
+        $this->load->view('footer');
+    }
 }
 
 
