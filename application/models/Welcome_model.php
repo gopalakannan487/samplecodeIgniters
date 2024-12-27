@@ -38,5 +38,23 @@ class Welcome_model extends CI_Model {
         return false; // Invalid credentials
     }
 
+
+        public function get_all_roles() {
+        // Example query: Adjust according to your database schema
+        $query = $this->db->get('roles'); // 'roles' is your database table
+        return $query->result_array();
+    }
+
+  public function get_teaching_roles() {
+    $this->db->where('role_type', 'Teaching'); // Add condition for Teaching roles
+    $query = $this->db->get('roles'); // 'roles' is your database table
+    return $query->result_array();
+}
+  public function get_nonteaching_roles() {
+    $this->db->where('role_type', 'Non-Teaching'); // Add condition for Teaching roles
+    $query = $this->db->get('roles'); // 'roles' is your database table
+    return $query->result_array();
+}
+
     }
     ?>

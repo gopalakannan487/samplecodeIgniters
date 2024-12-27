@@ -157,7 +157,14 @@ public function formsubmit()
     public function dashboard()
     {
         $this->load->view('header-template');
-        $this->load->view('dashboard');
+         // Fetch all roles
+    $data['roles'] = $this->Welcome_model->get_all_roles();
+    $data['troles'] = $this->Welcome_model->get_teaching_roles();
+    $data['nroles'] = $this->Welcome_model->get_nonteaching_roles();
+
+
+    // echo '<pre>';print_r($data);exit;
+        $this->load->view('role_view', $data);
         $this->load->view('footer');
     }
 }
