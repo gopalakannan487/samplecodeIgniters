@@ -1,4 +1,4 @@
-       <!--====== Footer PART START ======-->
+       <!--====== Footer START ======-->
 
         <footer class="footer_area bg_cover" style="background-image: url(assets/images/footer_bg.jpg);">
             <div class="footer_widget pt-80 pb-130">
