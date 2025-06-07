@@ -43,6 +43,30 @@ class Welcome_model extends CI_Model {
     }
 
 
+ public function formdepdata($depname) {
+    $this->db->insert('departments',$depname);
+        return true;
+      
+    }
+
+ 
+public function update_dept($data, $deparnid)
+{
+    $this->db->where('dept_id', $deparnid); 
+    $query = $this->db->update('departments',$data); 
+
+    return $this->db->affected_rows();
+}
+
+    public function delete_dept($dept_id)
+    {
+        $this->db->where('dept_id', $dept_id);
+        $this->db->delete('departments');
+        return $this->db->affected_rows(); // returns 1 if successful
+    }
+
+
+
         public function get_all_roles() {
         // Example query: Adjust according to your database schema
         $query = $this->db->get('roles'); // 'roles' is your database table
@@ -78,6 +102,18 @@ public function get_all_events() {
     $this->db->select("event_id, event_title, DATE_FORMAT(event_date, '%d %b %Y') as formatted_date, event_description, event_image");
     return $this->db->get('events')->result_array();
 }
+
+
+
+//ulselect
+    public function save_tutorial($name) {
+        $data = [
+            'name' => $name
+        ];
+
+        // insert into 'tutorials' table (make sure it exists)
+        return $this->db->insert('tutorials', $data);
+    }
 
 
 

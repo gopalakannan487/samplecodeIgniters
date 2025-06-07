@@ -176,6 +176,54 @@ public function formsubmit()
     }
 
 
+
+   public function formdep() {
+ 
+
+        // Get the posted data
+        $depname['dept_name'] = $this->input->post('dept_name'); 
+ 
+   // echo "<pre>";print_r($depname);exit;
+        $result = $this->Welcome_model->formdepdata($depname);
+        // Check the result
+        if ($result) {
+         
+            // Return success response
+            echo json_encode(['status' => 'success', 'message' => 'Department saved successful!']);
+        } else {
+            // Invalid credentials
+            echo json_encode(['status' => 'error', 'message' => 'Department Not saved!']);
+        }
+    }
+
+
+    public function fetch_departments() {
+                $this->load->library('datatables');
+                $this->datatables
+            ->select('dept_id, dept_name as dn')
+            ->from('departments D');
+       
+        echo $this->datatables->generate();
+ 
+    }
+
+    public function depupdates(){
+        // $deparna = $this->input->post('depnam');
+        $data['dept_name'] = $this->input->post('depnam');
+        $deparnid = $this->input->post('depnamid');
+             // echo '<pre>';print_r($deparna);exit;
+        $dep_details = $this->Welcome_model->update_dept($data, $deparnid);
+        echo json_encode($dep_details);
+    }
+
+
+  public function delete_dept()
+    {
+        $dept_id = $this->input->post('dept_id');
+        $deleted = $this->Welcome_model->delete_dept($dept_id);
+        echo $deleted ? 1 : 0;
+    }
+
 // Dashboard view
 
    public function dashboard()
@@ -234,6 +282,21 @@ public function formsubmit()
         $this->load->view('footer');
     }
 
+//ulselect
+public function ulselect()
+{
+    $selected = $this->input->post('selected_tutorial', true);
+    if ($selected) {
+        $this->Welcome_model->save_tutorial($selected);
+        $this->session->set_flashdata('success_msg', $selected);
+    } else {
+        $this->session->set_flashdata('error_msg', 'No selection made.');
+    }
+    redirect('Welcome'); // redirect back to form
+}
+
+
+
 public function save_event() {
     $response = ["status" => "error", "message" => "Something went wrong!"];
 
@@ -291,6 +354,9 @@ public function save_event() {
 
     
 
+
+
 }
+
 
 

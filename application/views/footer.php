@@ -118,6 +118,10 @@
  
        <!--====== Sweet alert js ======-->
         <script src="<?php echo base_url('')?>/assets/js/sweetalert.js"></script>
+
+       <!--====== Datatable js ======-->
+        <script src="<?php echo base_url('')?>/assets/js/dataTables.min.js"></script>
+        <script src="<?php echo base_url('')?>/assets/js/dataTables.bootstrap4.min.js"></script>
  <script>
 $(document).ready(function() {
     $('#emailForm').on('submit', function(e) {

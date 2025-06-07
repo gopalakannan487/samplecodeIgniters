@@ -47,6 +47,11 @@
         <!--====== datepicker ======-->
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+        <!--====== Datatable css ======-->
+        <!-- <link rel="stylesheet" href="<?php echo base_url('')?>/assets/css/datatable.css" /> -->
+        <link rel="stylesheet" href="<?php echo base_url('')?>/assets/css/dataTables.bootstrap4.min.css" />
+        
+
         <!--====== jquery js ======-->
         <script src="<?php echo base_url('')?>/assets/js/vendor/modernizr-3.6.0.min.js"></script>
         <script src="<?php echo base_url('')?>/assets/js/vendor/jquery-1.12.4.min.js"></script>
